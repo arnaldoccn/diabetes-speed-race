@@ -53,6 +53,7 @@ Assets/Scripts/Questions/QuestionMarks.cs
 Assets/Scripts/Questions/QuestionsTriggers.cs
 Assets/Scripts/ReturnPoints/ReturnPoint.cs
 Assets/Scripts/SpeedControllers/SpeedController.cs
+Assets/Scripts/Utils/DesactiveGameObject.cs
 Assets/Scripts/Utils/GameConstants.cs
 Assets/Scripts/Utils/PlayerPrefsX.cs
 Assets/Scripts/Utils/Randomness.cs

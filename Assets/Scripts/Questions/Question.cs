@@ -8,6 +8,10 @@ public class Question : MonoBehaviour
     private List<GameObject>questionsMarks = new List<GameObject>( );
     [SerializeField]
     private GameObject gui;
+    [SerializeField]
+    private GameObject wrong;
+    [SerializeField]
+    private GameObject right;
     private int selectedAnswer;
     public int rightAnswer;
 
@@ -32,6 +36,7 @@ public class Question : MonoBehaviour
                     this.gameObject.SetActive( false );
                     Time.timeScale = 1;
                     gui.SetActive( true );
+                    right.SetActive( true );
                     Debug.Log( "certa" );
                 }
                 else
@@ -40,6 +45,7 @@ public class Question : MonoBehaviour
                     Time.timeScale = 1;
                     GameManager.Instance.GrowTime( );
                     gui.SetActive( true );
+                    wrong.SetActive( true );
                     Debug.Log( "errada" );
                 }
             }

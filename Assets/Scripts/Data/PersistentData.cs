@@ -65,7 +65,7 @@ public class PersistentData : MonoBehaviour {
 
     public void SaveNameAndCRM()
     {
-        name = FirstScreen.Instance.name + " " + FirstScreen.Instance.crm;
+        name = FirstScreen.Instance.name + "-" + FirstScreen.Instance.crm;
         crm     = FirstScreen.Instance.crm;
     }
 

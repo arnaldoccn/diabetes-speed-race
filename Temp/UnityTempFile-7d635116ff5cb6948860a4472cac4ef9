@@ -2,8 +2,9 @@
 -target:library
 -nowarn:0169
 -out:Temp/Assembly-CSharp.dll
--r:"C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/WindowsStandalonePlayer/Managed/UnityEngine.dll"
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll"
 -r:Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll
+-r:"C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll"
 -define:UNITY_STANDALONE_WIN
 -define:ENABLE_MICROPHONE
 -define:ENABLE_TEXTUREID_MAP
@@ -33,6 +34,9 @@
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
 -define:UNITY_4_3_4
 -define:UNITY_4_3
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_WIN
 Assets/Scripts/Audio/AudioController.cs
 Assets/Scripts/Car/Car.cs
 Assets/Scripts/Data/PersistentData.cs
@@ -49,6 +53,7 @@ Assets/Scripts/Questions/QuestionMarks.cs
 Assets/Scripts/Questions/QuestionsTriggers.cs
 Assets/Scripts/ReturnPoints/ReturnPoint.cs
 Assets/Scripts/SpeedControllers/SpeedController.cs
+Assets/Scripts/Utils/DesactiveGameObject.cs
 Assets/Scripts/Utils/GameConstants.cs
 Assets/Scripts/Utils/PlayerPrefsX.cs
 Assets/Scripts/Utils/Randomness.cs

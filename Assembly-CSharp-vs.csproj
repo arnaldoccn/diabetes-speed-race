@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2C62C70F-FE6F-3C7C-C17B-08583E60B30F}</ProjectGuid>
+	<ProjectGuid>{1C3B91BF-6082-C6E8-19F9-6CBA77487CF4}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Questions\QuestionsTriggers.cs" />
      <Compile Include="Assets\Scripts\ReturnPoints\ReturnPoint.cs" />
      <Compile Include="Assets\Scripts\SpeedControllers\SpeedController.cs" />
+     <Compile Include="Assets\Scripts\Utils\DesactiveGameObject.cs" />
      <Compile Include="Assets\Scripts\Utils\GameConstants.cs" />
      <Compile Include="Assets\Scripts\Utils\PlayerPrefsX.cs" />
      <Compile Include="Assets\Scripts\Utils\Randomness.cs" />

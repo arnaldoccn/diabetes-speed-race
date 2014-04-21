@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2C62C70F-FE6F-3C7C-C17B-08583E60B30F}</ProjectGuid>
+	<ProjectGuid>{1C3B91BF-6082-C6E8-19F9-6CBA77487CF4}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -62,13 +62,14 @@
      <Compile Include="Assets\Scripts\Questions\QuestionsTriggers.cs" />
      <Compile Include="Assets\Scripts\ReturnPoints\ReturnPoint.cs" />
      <Compile Include="Assets\Scripts\SpeedControllers\SpeedController.cs" />
+     <Compile Include="Assets\Scripts\Utils\DesactiveGameObject.cs" />
      <Compile Include="Assets\Scripts\Utils\GameConstants.cs" />
      <Compile Include="Assets\Scripts\Utils\PlayerPrefsX.cs" />
      <Compile Include="Assets\Scripts\Utils\Randomness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{747571F9-1F8D-4751-7617-330E10998ED4}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+      <Project>{C7D47192-8891-BC52-9D12-12529D63DD28}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
