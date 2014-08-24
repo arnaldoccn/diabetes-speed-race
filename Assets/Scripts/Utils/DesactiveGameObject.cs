@@ -4,7 +4,7 @@ using System.Collections;
 public class DesactiveGameObject : MonoBehaviour
 {
 
-    void Start( )
+    void OnEnable( )
     {
         Invoke( "Desactive", 2f );
     }

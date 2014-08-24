@@ -24,7 +24,7 @@ public class InterfacePostGame : MonoBehaviour {
         minibula.SetActive( false );
         ranking.SetActive( true );
         rankingShowList = PersistentData.Instance.rankingList;
-        Debug.Log( rankingTiles.Count );
+		Debug.Log( rankingShowList );
         for ( int i = 0; i < rankingTiles.Count; i++ )
         {
             if ( rankingShowList.Count > i )

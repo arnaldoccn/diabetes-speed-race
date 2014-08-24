@@ -33,6 +33,7 @@ public class PersistentData : MonoBehaviour {
 
     void Start()
     {
+		//PlayerPrefs.DeleteAll();
         instance = this;
         checkArray = PlayerPrefsX.GetStringArray( GameConstants.USERS_NAME_ARRAY );
         if ( checkArray.Length == 0 )
@@ -61,6 +62,7 @@ public class PersistentData : MonoBehaviour {
             }
             );
         }
+		//PlayerPrefs.DeleteAll();
     }
 
     public void SaveNameAndCRM()
@@ -87,5 +89,7 @@ public class PersistentData : MonoBehaviour {
         playersTimeArray = times.ToArray( );
         PlayerPrefsX.SetStringArray( GameConstants.USERS_NAME_ARRAY, playersNameArray );
         PlayerPrefsX.SetFloatArray( GameConstants.USERS_TIME_ARRAY, playersTimeArray );
+
+		PlayerPrefs.Save();
     }
 }

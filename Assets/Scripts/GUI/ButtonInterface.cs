@@ -12,6 +12,7 @@ public class ButtonInterface : MonoBehaviour {
 
     void OnMouseUpAsButton( )
     {
+		Debug.Log("fdshjfsdjhf");
         target.SendMessage( messageUpAsButtonMessage, messageParams, SendMessageOptions.DontRequireReceiver );
         if ( this.renderer )
         {
