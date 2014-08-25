@@ -33,36 +33,39 @@ public class PersistentData : MonoBehaviour {
 
     void Start()
     {
-		//PlayerPrefs.DeleteAll();
         instance = this;
-        checkArray = PlayerPrefsX.GetStringArray( GameConstants.USERS_NAME_ARRAY );
-        if ( checkArray.Length == 0 )
+        checkArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_NAME_ARRAY);
+        if (checkArray.Length == 0)
         {
-            PlayerPrefsX.SetStringArray( GameConstants.USERS_NAME_ARRAY, playersNameArray );
-            PlayerPrefsX.SetStringArray( GameConstants.USERS_CRM_ARRAY, playersCRMArray );
-            PlayerPrefsX.SetFloatArray( GameConstants.USERS_TIME_ARRAY, playersTimeArray );
-            playersNameArray = PlayerPrefsX.GetStringArray( GameConstants.USERS_NAME_ARRAY );
-            playersCRMArray = PlayerPrefsX.GetStringArray( GameConstants.USERS_CRM_ARRAY );
-            playersTimeArray = PlayerPrefsX.GetFloatArray( GameConstants.USERS_TIME_ARRAY );
+            PlayerPrefsX.SetStringArray(GameConstants.USERS_NAME_ARRAY, playersNameArray);
+            PlayerPrefsX.SetStringArray(GameConstants.USERS_CRM_ARRAY, playersCRMArray);
+            PlayerPrefsX.SetFloatArray(GameConstants.USERS_TIME_ARRAY, playersTimeArray);
+            playersNameArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_NAME_ARRAY);
+            playersCRMArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_CRM_ARRAY);
+            playersTimeArray = PlayerPrefsX.GetFloatArray(GameConstants.USERS_TIME_ARRAY);
         }
         else
         {
-            playersNameArray = PlayerPrefsX.GetStringArray( GameConstants.USERS_NAME_ARRAY );
-            playersCRMArray = PlayerPrefsX.GetStringArray( GameConstants.USERS_CRM_ARRAY );
-            playersTimeArray = PlayerPrefsX.GetFloatArray( GameConstants.USERS_TIME_ARRAY );
-            for ( int i = 0; i < playersNameArray.Length; i++ )
+            playersNameArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_NAME_ARRAY);
+            playersCRMArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_CRM_ARRAY);
+            playersTimeArray = PlayerPrefsX.GetFloatArray(GameConstants.USERS_TIME_ARRAY);
+            
+            for (int i = 0; i < playersNameArray.Length; i++)
             {
-                initialDictionary.Add( playersNameArray[ i ], playersTimeArray[ i ] );
+                if (!initialDictionary.ContainsKey(playersNameArray[i]))
+                {
+                    initialDictionary.Add(playersNameArray[i], playersTimeArray[i]);
+                }
             }
-            List<KeyValuePair<string, float>> myList = initialDictionary.ToList( );
+            List<KeyValuePair<string, float>> myList = initialDictionary.ToList();
 
-            myList.Sort( ( firstPair, nextPair ) =>
+            myList.Sort((firstPair, nextPair) =>
             {
-                return firstPair.Value.CompareTo( nextPair.Value );
+                return firstPair.Value.CompareTo(nextPair.Value);
             }
             );
         }
-		//PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void SaveNameAndCRM()
@@ -73,23 +76,90 @@ public class PersistentData : MonoBehaviour {
 
     public void CheckRanking()
     {
-        initialDictionary.Add( name, System.Convert.ToInt64(time) );
-        foreach ( KeyValuePair<string,float> item in initialDictionary )
+        if (!initialDictionary.ContainsKey(name))
         {
-            names.Add( item.Key );
-            times.Add( item.Value );
+            SaveRanking();
         }
-        rankingList = initialDictionary.ToList( );
-        rankingList.Sort( ( firstPair, nextPair ) =>
+        else
         {
-            return firstPair.Value.CompareTo( nextPair.Value );
+            float value = initialDictionary[name];
+            if (value > System.Convert.ToInt64(time))
+            {
+                initialDictionary.Remove(name);
+                SaveRanking();
+            }
+            else
+            {
+                rankingList = initialDictionary.ToList();
+                rankingList.Sort((firstPair, nextPair) =>
+                {
+                    return firstPair.Value.CompareTo(nextPair.Value);
+                }
+               );
+            }
+        }
+    }
+
+    private void SaveRanking()
+    {
+        initialDictionary.Add(name, System.Convert.ToInt64(time));
+        foreach (KeyValuePair<string, float> item in initialDictionary)
+        {
+            names.Add(item.Key);
+            times.Add(item.Value);
+        }
+        rankingList = initialDictionary.ToList();
+        rankingList.Sort((firstPair, nextPair) =>
+        {
+            return firstPair.Value.CompareTo(nextPair.Value);
         }
        );
-        playersNameArray = names.ToArray( );
-        playersTimeArray = times.ToArray( );
-        PlayerPrefsX.SetStringArray( GameConstants.USERS_NAME_ARRAY, playersNameArray );
-        PlayerPrefsX.SetFloatArray( GameConstants.USERS_TIME_ARRAY, playersTimeArray );
+        playersNameArray = names.ToArray();
+        playersTimeArray = times.ToArray();
+        PlayerPrefsX.SetStringArray(GameConstants.USERS_NAME_ARRAY, playersNameArray);
+        PlayerPrefsX.SetFloatArray(GameConstants.USERS_TIME_ARRAY, playersTimeArray);
 
-		PlayerPrefs.Save();
+        PlayerPrefs.Save();
+    }
+
+    public void ListRanking()
+    {
+        checkArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_NAME_ARRAY);
+        if (checkArray.Length == 0)
+        {
+            PlayerPrefsX.SetStringArray(GameConstants.USERS_NAME_ARRAY, playersNameArray);
+            PlayerPrefsX.SetStringArray(GameConstants.USERS_CRM_ARRAY, playersCRMArray);
+            PlayerPrefsX.SetFloatArray(GameConstants.USERS_TIME_ARRAY, playersTimeArray);
+            playersNameArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_NAME_ARRAY);
+            playersCRMArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_CRM_ARRAY);
+            playersTimeArray = PlayerPrefsX.GetFloatArray(GameConstants.USERS_TIME_ARRAY);
+        }
+        else
+        {
+            playersNameArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_NAME_ARRAY);
+            playersCRMArray = PlayerPrefsX.GetStringArray(GameConstants.USERS_CRM_ARRAY);
+            playersTimeArray = PlayerPrefsX.GetFloatArray(GameConstants.USERS_TIME_ARRAY);
+
+            for (int i = 0; i < playersNameArray.Length; i++)
+            {
+                if (!initialDictionary.ContainsKey(playersNameArray[i]))
+                {
+                    initialDictionary.Add(playersNameArray[i], playersTimeArray[i]);
+                }
+            }
+            List<KeyValuePair<string, float>> myList = initialDictionary.ToList();
+
+            myList.Sort((firstPair, nextPair) =>
+            {
+                return firstPair.Value.CompareTo(nextPair.Value);
+            }
+            );
+        }
+        rankingList = initialDictionary.ToList();
+        rankingList.Sort((firstPair, nextPair) =>
+        {
+            return firstPair.Value.CompareTo(nextPair.Value);
+        }
+       );
     }
 }

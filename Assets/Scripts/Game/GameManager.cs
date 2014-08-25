@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour {
 
     public void GrowTime()
     {
-        Debug.Log( "grow time" );
         startTime = startTime - 5;
     }
 }
