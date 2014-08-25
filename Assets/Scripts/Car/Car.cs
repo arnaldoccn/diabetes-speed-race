@@ -125,9 +125,11 @@ public class Car : MonoBehaviour {
     private void ReturnCar( )
     {
         StopTurning( );
-        this.transform.position = actualReturnPointPosition;
-        this.transform.rotation = Quaternion.Euler( actualReturnPointRotation );
+        Debug.Log(actualReturnPointPosition);
+        this.transform.localPosition = actualReturnPointPosition;
+        this.transform.localRotation = Quaternion.Euler( actualReturnPointRotation );
         actualToque = actualReturnPointSpeed;
+        Debug.Log(this.transform.position);
     }
     private void RestarGame()
     {
