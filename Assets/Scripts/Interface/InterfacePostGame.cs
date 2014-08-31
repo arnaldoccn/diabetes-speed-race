@@ -38,7 +38,7 @@ public class InterfacePostGame : MonoBehaviour {
                   }
             } 
         }
-        Invoke( "ReloadScene", 8f );
+        Invoke( "ReloadScene", 30f );
     }
 
     void ReloadScene()
