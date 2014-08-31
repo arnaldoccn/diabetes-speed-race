@@ -28,9 +28,11 @@ public class Car : MonoBehaviour {
     public Vector3 actualReturnPointPosition;
     public Vector3 actualReturnPointRotation;
     public float actualReturnPointSpeed;
+    public bool accelerometerControl;
 
 	void Start () 
     {
+       
         lastSpeedControllerPoint = firstSpeedControllerPoint;
         this.rigidbody.centerOfMass = new Vector3(0,-0.5f,0.3f);
         GUI.SetActive( false );
@@ -53,27 +55,8 @@ public class Car : MonoBehaviour {
                 GetCollider( 3 ).brakeTorque = 0;
                 GetCollider( 2 ).motorTorque = ( float )actualToque;
                 GetCollider( 3 ).motorTorque = ( float )actualToque;
-
-                if ( Input.GetKeyDown( KeyCode.R ) )
-                {
-                    /* Debug.Log( "hjkfdshjkfdsjk" );
-                    this.transform.position = lastSpeedControllerPoint.transform.position;
-                    this.transform.rotation =Quaternion.Euler(new Vector3( 270, 90, 0 ));
-                    steer = 0;
-                    GetCollider( 0 ).steerAngle = ( float )steer;
-                    GetCollider( 1 ).steerAngle = ( float )steer;
-                    actualToque = -40;  */
-
-                    Application.LoadLevel( 0 );
-                }
             }
         }
-        /* Debug.DrawLine( this.transform.position, new Vector3( this.transform.position.x, this.transform.position.y * -1, this.transform.position.z ) );
-        RaycastHit hit;
-        if ( Physics.Raycast( transform.position, new Vector3( this.transform.position.x * -1, this.transform.position.y * -1, this.transform.position.z * -1 ), out hit ) )
-        {
-            Debug.Log( hit.transform.name );
-        } */
 
         if ( this.transform.rotation.eulerAngles.x >= 280 || this.transform.rotation.eulerAngles.x <= 260)
         {
@@ -103,14 +86,27 @@ public class Car : MonoBehaviour {
 
     public void TurnLeft()
     {
-        steer = -10f;
+        if (accelerometerControl)
+        {
+            steer = Input.acceleration.x * 10;
+        }
+        else
+        {
+            steer = -10f;
+        }
         GetCollider( 0 ).steerAngle = ( float )steer;
         GetCollider( 1 ).steerAngle = ( float )steer;
     }
     public void TurnRight( )
     {
-       
-        steer = 10f;
+        if (accelerometerControl)
+        {
+            steer = Input.acceleration.x * 10;
+        }
+        else
+        {
+            steer = 10f;
+        }
         GetCollider( 0 ).steerAngle = ( float )steer;
         GetCollider( 1 ).steerAngle = ( float )steer;
     }
@@ -125,11 +121,9 @@ public class Car : MonoBehaviour {
     private void ReturnCar( )
     {
         StopTurning( );
-        Debug.Log(actualReturnPointPosition);
         this.transform.localPosition = actualReturnPointPosition;
         this.transform.localRotation = Quaternion.Euler( actualReturnPointRotation );
         actualToque = actualReturnPointSpeed;
-        Debug.Log(this.transform.position);
     }
     private void RestarGame()
     {

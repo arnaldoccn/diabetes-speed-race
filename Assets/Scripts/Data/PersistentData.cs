@@ -54,7 +54,10 @@ public class PersistentData : MonoBehaviour {
             {
                 if (!initialDictionary.ContainsKey(playersNameArray[i]))
                 {
-                    initialDictionary.Add(playersNameArray[i], playersTimeArray[i]);
+                    if (playersNameArray[i] != "")
+                    {
+                        initialDictionary.Add(playersNameArray[i], playersTimeArray[i]);
+                    }
                 }
             }
             List<KeyValuePair<string, float>> myList = initialDictionary.ToList();
@@ -65,12 +68,11 @@ public class PersistentData : MonoBehaviour {
             }
             );
         }
-        //PlayerPrefs.DeleteAll();
     }
 
     public void SaveNameAndCRM()
     {
-        name = FirstScreen.Instance.name + "-" + FirstScreen.Instance.crm;
+        name    = FirstScreen.Instance.name + "-" + FirstScreen.Instance.crm;
         crm     = FirstScreen.Instance.crm;
     }
 

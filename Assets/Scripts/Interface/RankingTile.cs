@@ -12,8 +12,6 @@ public class RankingTile : MonoBehaviour {
 
     public void Setup(string name, float time)
     {
-        Debug.Log( name );
-        Debug.Log( time );
         this.name.text = name;
         TimeSpan span   = new TimeSpan( 0, 0, 0, 0, Convert.ToInt32(time) );
         this.time.text = span.Minutes + ":" + span.Seconds + ":" + span.Milliseconds;

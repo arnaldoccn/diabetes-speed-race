@@ -7,7 +7,6 @@ public class RankingButton : MonoBehaviour {
 
 	void OnMouseUpAsButton( )
 	{
-        Debug.Log("BLARG");
         interfaceGame.SetActive(false);
         interfaceRanking.SetActive(true);
 	}

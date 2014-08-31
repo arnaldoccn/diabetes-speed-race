@@ -25,15 +25,17 @@ public class InterfacePostGame : MonoBehaviour {
         ranking.SetActive( true );
         PersistentData.Instance.ListRanking();
         rankingShowList = PersistentData.Instance.rankingList;
-		Debug.Log( rankingShowList );
         for ( int i = 0; i < rankingTiles.Count; i++ )
         {
             if ( rankingShowList.Count > i )
             {
                  rankingTiles[ i ].SetActive( true );
                   var item = rankingShowList.ElementAt( i );
-                  Debug.Log( item.Key + " " + item.Value );
-                 rankingTiles[ i ].GetComponent<RankingTile>( ).Setup( item.Key, item.Value );  
+                  if (item.Key != "")
+                  {
+                      Debug.Log(item.Key + " " + item.Value);
+                      rankingTiles[i].GetComponent<RankingTile>().Setup(item.Key, item.Value);
+                  }
             } 
         }
         Invoke( "ReloadScene", 8f );

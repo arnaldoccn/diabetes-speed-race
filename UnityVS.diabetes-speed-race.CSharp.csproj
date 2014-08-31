@@ -53,9 +53,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Audio\AudioController.cs" />
     <Compile Include="Assets\Scripts\Car\Car.cs" />
+    <Compile Include="Assets\Scripts\Control\Control.cs" />
+    <Compile Include="Assets\Scripts\Control\ControlObject.cs" />
     <Compile Include="Assets\Scripts\Data\PersistentData.cs" />
     <Compile Include="Assets\Scripts\GUI\Active.cs" />
     <Compile Include="Assets\Scripts\GUI\Button.cs" />
+    <Compile Include="Assets\Scripts\GUI\ButtonAccelerometer.cs" />
     <Compile Include="Assets\Scripts\GUI\ButtonInterface.cs" />
     <Compile Include="Assets\Scripts\Gambets\RankingButton.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
