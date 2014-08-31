@@ -23,6 +23,7 @@ public class Menu : MonoBehaviour {
 	void GoToTheSecondScreen () 
     {
         PersistentData.Instance.SaveNameAndCRM( );
+		CancelInvoke();
         for ( int i = 0; i < screenList.Count; i++ )
         {
             if(screenList[i].activeSelf)
@@ -38,7 +39,6 @@ public class Menu : MonoBehaviour {
 
     void InitGame()
     {
-        CancelInvoke();
         gameInterface.SetActive( false );
         game.SetActive( true );
     }

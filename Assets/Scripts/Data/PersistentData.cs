@@ -54,7 +54,7 @@ public class PersistentData : MonoBehaviour {
             {
                 if (!initialDictionary.ContainsKey(playersNameArray[i]))
                 {
-                    if (playersNameArray[i] != "")
+					if (playersNameArray[i] != "" && playersTimeArray[i] > 0)
                     {
                         initialDictionary.Add(playersNameArray[i], playersTimeArray[i]);
                     }

@@ -70,7 +70,13 @@ public class Car : MonoBehaviour {
         {
             count = 0;
         }
-        
+
+		if (accelerometerControl)
+		{
+			steer =  11.5f * Input.acceleration.x;
+			GetCollider( 0 ).steerAngle = ( float )steer;
+			GetCollider( 1 ).steerAngle = ( float )steer;
+		}   
     }
 
     private WheelCollider GetCollider(int n)
@@ -86,27 +92,13 @@ public class Car : MonoBehaviour {
 
     public void TurnLeft()
     {
-        if (accelerometerControl)
-        {
-            steer = Input.acceleration.x * 10;
-        }
-        else
-        {
-            steer = -10f;
-        }
+        steer = -10f;
         GetCollider( 0 ).steerAngle = ( float )steer;
         GetCollider( 1 ).steerAngle = ( float )steer;
     }
     public void TurnRight( )
     {
-        if (accelerometerControl)
-        {
-            steer = Input.acceleration.x * 10;
-        }
-        else
-        {
-            steer = 10f;
-        }
+        steer = 10f;
         GetCollider( 0 ).steerAngle = ( float )steer;
         GetCollider( 1 ).steerAngle = ( float )steer;
     }

@@ -11,7 +11,8 @@ public class Control : MonoBehaviour {
     [SerializeField]
     GameObject dir;
     public bool willUseAccelerometer;
-
+	[SerializeField]
+	Car car;
 
 
     public void ChooseControl(bool willUse)
@@ -21,6 +22,7 @@ public class Control : MonoBehaviour {
         hud.SetActive(true);
         if(willUse)
         {
+			car.accelerometerControl = true;
             arrows.SetActive(false);
             Debug.Log(arrows.activeSelf);
         }
