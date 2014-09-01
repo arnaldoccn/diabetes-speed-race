@@ -15,6 +15,7 @@ public class Car : MonoBehaviour {
     private GameObject firstSpeedControllerPoint;
     [SerializeField]
     private GameObject glass;
+	public bool gameIsOver;
 
     private GameObject lastSpeedControllerPoint;
     private double power = 0.0f;
@@ -61,7 +62,7 @@ public class Car : MonoBehaviour {
         if ( this.transform.rotation.eulerAngles.x >= 280 || this.transform.rotation.eulerAngles.x <= 260)
         {
             count++;
-            if(count >=90)
+            if(count >=90 && !gameIsOver)
             {
                 ReturnCar( );
             }
@@ -112,6 +113,7 @@ public class Car : MonoBehaviour {
 
     private void ReturnCar( )
     {
+
         StopTurning( );
         this.transform.localPosition = actualReturnPointPosition;
         this.transform.localRotation = Quaternion.Euler( actualReturnPointRotation );

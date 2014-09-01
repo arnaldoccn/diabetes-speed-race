@@ -11,6 +11,8 @@ public class GameOver : MonoBehaviour {
     private GameObject congratsScreen;
     [SerializeField]
     public TextMesh time;
+	[SerializeField]
+	private Car car;
     public string timeString;
     public bool gameIsOver = false;
 
@@ -20,6 +22,7 @@ public class GameOver : MonoBehaviour {
     {
         if ( other.tag == "Car" )
         {
+			car.gameIsOver = true;
             gameIsOver = true;
             
             congratsScreen.SetActive( true );
