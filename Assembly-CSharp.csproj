@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Interface\InterfacePostGame.cs" />
      <Compile Include="Assets\Scripts\Interface\Menu.cs" />
      <Compile Include="Assets\Scripts\Interface\RankingTile.cs" />
+     <Compile Include="Assets\Scripts\Interface\Reload.cs" />
      <Compile Include="Assets\Scripts\Questions\Question.cs" />
      <Compile Include="Assets\Scripts\Questions\QuestionMarks.cs" />
      <Compile Include="Assets\Scripts\Questions\QuestionsTriggers.cs" />

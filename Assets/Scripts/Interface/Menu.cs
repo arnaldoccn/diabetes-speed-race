@@ -14,10 +14,12 @@ public class Menu : MonoBehaviour {
     private GameObject thisInterface;
     [SerializeField]
     private GameObject interfaceRanking;
+	[SerializeField]
+	private GameObject popup;
 
     void OnEnable()
     {
-        Invoke("ShowRanking", 30f);
+        Invoke("ShowRanking", 60f);
     }
 
 	void GoToTheSecondScreen () 
@@ -46,9 +48,21 @@ public class Menu : MonoBehaviour {
     private void ClearScore()
     {
         Debug.Log("Clear");
-        PlayerPrefs.DeleteAll();
-        Application.LoadLevel(0);
+		popup.SetActive( true );
+      /*  PlayerPrefs.DeleteAll();
+        Application.LoadLevel(0);*/
     }
+
+	private void DeleAll()
+	{
+		PlayerPrefs.DeleteAll();
+		Application.LoadLevel(0);
+	}
+
+	private void ClosePopUp()
+	{
+		popup.SetActive( false );;
+	}
 
     private void ShowRanking()
     {
